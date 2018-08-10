@@ -160,6 +160,10 @@ Prefab:
       propertyPath: m_Name
       value: abandoned_house_2
       objectReference: {fileID: 0}
+    - target: {fileID: 111924, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
   m_IsPrefabParent: 0
@@ -230,7 +234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_Name
@@ -363,11 +367,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573ccea147a922b4d9eed794d04a1807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Snowing: {fileID: 1460345895}
+  TerrainTexture: {fileID: 1852864147}
+  m_Cloud: {fileID: 745135472}
+  m_Snow: {fileID: 1460345892}
+  Snow: 0
   m_Wind: {fileID: 1573988701}
-  Wind: 1
-  m_RainController: {fileID: 1852270335}
-  Rain: 0
+  Wind: 0
+  m_Rain: {fileID: 1852270331}
+  Rain: 1
 --- !u!1001 &619964840
 Prefab:
   m_ObjectHideFlags: 0
@@ -461,6 +468,10 @@ Prefab:
       propertyPath: m_Name
       value: abandoned_house_3
       objectReference: {fileID: 0}
+    - target: {fileID: 111924, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
+      propertyPath: m_TagString
+      value: Roof
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
   m_IsPrefabParent: 0
@@ -531,7 +542,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 51.58, y: 0, z: 0}
 --- !u!1 &745135472
 GameObject:
@@ -543,6 +554,7 @@ GameObject:
   - component: {fileID: 745135473}
   - component: {fileID: 745135475}
   - component: {fileID: 745135474}
+  - component: {fileID: 745135476}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -677,7 +689,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1449729068
+  randomSeed: -421270804
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3978,6 +3990,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &745135476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 745135472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b99ed6d777a18d4dbb9e7eb21acbb2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Clouds: {fileID: 745135472}
+  m_Light: {fileID: 693563953}
 --- !u!1 &839486944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,6 +4011,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 839486945}
+  - component: {fileID: 839486946}
   m_Layer: 0
   m_Name: abandoned
   m_TagString: Untagged
@@ -4009,6 +4035,19 @@ Transform:
   m_Father: {fileID: 429123488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &839486946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839486944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24716a7633625745b3d6abd74e32d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoofInSnow: {fileID: 2100000, guid: f0c20890e6fc6ea429907cef02c7776a, type: 2}
+  RoofDefault: {fileID: 2100000, guid: 90d2072be09e1b24f9fead5f30c80bcb, type: 2}
 --- !u!1001 &843179025
 Prefab:
   m_ObjectHideFlags: 0
@@ -4051,6 +4090,10 @@ Prefab:
     - target: {fileID: 198674, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
       propertyPath: m_Name
       value: abandoned_house_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 111924, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
+      propertyPath: m_TagString
+      value: Roof
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 790a175c5ecfdf9438c65e53296e5d2f, type: 2}
@@ -7653,7 +7696,6 @@ GameObject:
   - component: {fileID: 1852270332}
   - component: {fileID: 1852270334}
   - component: {fileID: 1852270333}
-  - component: {fileID: 1852270335}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -11089,20 +11131,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &1852270335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1852270331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86510db286543ca40ac038a77b8ee253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Clouds: {fileID: 745135472}
-  m_Raining: {fileID: 1852270331}
-  m_Light: {fileID: 693563953}
 --- !u!1 &1852864143
 GameObject:
   m_ObjectHideFlags: 0
@@ -11189,6 +11217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 1852864145}
+  roofsChanger: {fileID: 839486946}
 --- !u!1 &1884810933
 GameObject:
   m_ObjectHideFlags: 0

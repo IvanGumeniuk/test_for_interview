@@ -3,21 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeatherController : MonoBehaviour {
-
-    [SerializeField] private ParticleSystem m_Snowing;
+    [SerializeField] private TerrainTextureChanger TerrainTexture;
+    [SerializeField] private GameObject m_Cloud;
+    [SerializeField] private GameObject m_Snow;
+    public bool Snow;
     [SerializeField] private GameObject m_Wind;
     public bool Wind;
-    [SerializeField] private RainController m_RainController;
+    [SerializeField] private GameObject m_Rain;
     public bool Rain;
-    // Use this for initialization
+  
     void Start () {
-        if(m_RainController)
-          m_RainController.rainign(Rain);
-        m_Wind.SetActive(Wind);
-	}
+       
+        if(Rain)
+        {
+            m_Rain.SetActive(Rain);
+            m_Cloud.SetActive(Rain);
+            TerrainTexture.changeToNotWinter();
+        }
+
+        if(Wind)
+            m_Wind.SetActive(Wind);
+
+        if(Snow)
+        {
+            m_Snow.SetActive(Snow);
+            m_Cloud.SetActive(Snow);
+            TerrainTexture.changeToWinter();
+        }
+    }
 	
-	// Update is called once per frame
-	void Update () {
-        
-	}
 }
