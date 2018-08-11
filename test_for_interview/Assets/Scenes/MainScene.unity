@@ -376,7 +376,7 @@ MonoBehaviour:
   Wind: 0
   Snow: 0
   Rain: 0
-  Season: 3
+  Season: 2
 --- !u!1001 &619964840
 Prefab:
   m_ObjectHideFlags: 0

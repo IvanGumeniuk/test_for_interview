@@ -12,6 +12,10 @@ public class TerrainTextureChanger : MonoBehaviour
         SpruceInSnow
     };
     private const int TERRAIN_TEXTURE_COUNT = 4;
+    private Color32 AUTUMN_YELLOW = new Color32(231, 158, 49, 255);
+    private Color32 DEFAULT = new Color32(227, 225, 222, 255);
+    private Color32 AUTUMN_RED = new Color32(184, 86, 97, 255);
+
 
     [SerializeField] private Terrain terrain;
     [SerializeField] private RoofsChanger roofsChanger;
@@ -28,25 +32,12 @@ public class TerrainTextureChanger : MonoBehaviour
 
     public void changeSeason(Seasons season)
     {
-        int currentTreeOne = 0, currentTreeTwo = 0;
-        switch(season)
-        {
-            case Seasons.Autumn:
-            case Seasons.Spring:
-                currentTreeOne = (int)TreeType.Dry;
-                currentTreeTwo = (int)TreeType.GreenSpruce;
-                break;
-            case Seasons.Winter:
-                currentTreeOne = (int)TreeType.Dry;
-                currentTreeTwo = (int)TreeType.SpruceInSnow;
-                break;
-            case Seasons.Summer:
-                currentTreeOne = (int)TreeType.Green;
-                currentTreeTwo = (int)TreeType.GreenSpruce;
-                break;
-        }
+        int currentTreeOne = season == Seasons.Winter ? (int)TreeType.Dry : (int)TreeType.Green;
+        int currentTreeTwo = season == Seasons.Winter ? (int) TreeType.SpruceInSnow : (int)TreeType.GreenSpruce;
+        roofsChanger.changeRoof(season == Seasons.Winter ? true : false);
+        
         UpdateTerrainTexture(terrain.terrainData, (int)season);
-        ChangeTrees(currentTreeOne, currentTreeTwo);
+        ChangeTrees(currentTreeOne, currentTreeTwo, season);
     }
     /*
     public void changeToWinter()
@@ -93,17 +84,29 @@ public class TerrainTextureChanger : MonoBehaviour
         }
     }*/
 
-    void ChangeTrees(int tree_1_NumberTo, int tree_2_NumberTo)
+    void ChangeTrees(int tree_1_NumberTo, int tree_2_NumberTo, Seasons season)
     {
         if(m_TerrainData.treeInstances.Length == m_CurrentTreeList.Length)
         {
-            for(int tcnt = 0; tcnt < m_CurrentTreeList.Length; tcnt++)
+            for(int i = 0, j = 1; i < m_CurrentTreeList.Length; i+=2, j+=2)
             {
-                m_CurrentTreeList[tcnt].prototypeIndex = tcnt % 2 == 0 ? tree_1_NumberTo : tree_2_NumberTo;
+               // m_CurrentTreeList[i].prototypeIndex = i % 2 == 0 ? tree_1_NumberTo : tree_2_NumberTo;
+                m_CurrentTreeList[i].prototypeIndex = tree_1_NumberTo;
+                m_CurrentTreeList[j].prototypeIndex = tree_2_NumberTo;
+
+                if(season == Seasons.Autumn)
+                {
+                    m_CurrentTreeList[i].color = AUTUMN_YELLOW;
+                    if(i % 4 == 0) m_CurrentTreeList[i].color = AUTUMN_RED;
+                }
+                else
+                    m_CurrentTreeList[i].color = DEFAULT;
+                
             }
             m_TerrainData.treeInstances = m_CurrentTreeList;
         }
     }
+
 
     static void UpdateTerrainTexture(TerrainData terrainData, int textureNumberTo)
     {
