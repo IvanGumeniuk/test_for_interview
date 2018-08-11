@@ -369,12 +369,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TerrainTexture: {fileID: 1852864147}
   m_Cloud: {fileID: 745135472}
-  m_Snow: {fileID: 1460345892}
-  Snow: 0
   m_Wind: {fileID: 1573988701}
-  Wind: 0
+  m_Snow: {fileID: 1460345892}
   m_Rain: {fileID: 1852270331}
-  Rain: 1
+  Clouds: 0
+  Wind: 0
+  Snow: 0
+  Rain: 0
+  Season: 3
 --- !u!1001 &619964840
 Prefab:
   m_ObjectHideFlags: 0
@@ -4221,7 +4223,7 @@ ParticleSystemRenderer:
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
+  m_MinParticleSize: 0.001
   m_MaxParticleSize: 0.05
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
@@ -5357,7 +5359,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: -1
-      minScalar: 1
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:

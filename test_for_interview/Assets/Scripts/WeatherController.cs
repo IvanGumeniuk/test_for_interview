@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Seasons
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter
+};
+
 public class WeatherController : MonoBehaviour {
     [SerializeField] private TerrainTextureChanger TerrainTexture;
     [SerializeField] private GameObject m_Cloud;
-    [SerializeField] private GameObject m_Snow;
-    public bool Snow;
     [SerializeField] private GameObject m_Wind;
-    public bool Wind;
+    [SerializeField] private GameObject m_Snow;
     [SerializeField] private GameObject m_Rain;
+    public bool Clouds;
+    public bool Wind;
+    public bool Snow;
     public bool Rain;
-  
+    public Seasons Season;
+
     void Start () {
-       
-        if(Rain)
-        {
-            m_Rain.SetActive(Rain);
-            m_Cloud.SetActive(Rain);
-            TerrainTexture.changeToNotWinter();
-        }
+        TerrainTexture.changeSeason(Season);
 
-        if(Wind)
-            m_Wind.SetActive(Wind);
+        m_Rain.SetActive(Rain);
+        m_Wind.SetActive(Wind);
+        m_Snow.SetActive(Snow);
+        m_Cloud.SetActive(Clouds);
 
-        if(Snow)
-        {
-            m_Snow.SetActive(Snow);
-            m_Cloud.SetActive(Snow);
-            TerrainTexture.changeToWinter();
-        }
     }
 	
 }
