@@ -96,7 +96,7 @@ public class TerrainTextureChanger : MonoBehaviour
 
                 if(season == Seasons.Autumn)
                 {
-                    m_CurrentTreeList[i].color = AUTUMN_YELLOW;
+                    m_CurrentTreeList[i].color = AUTUMN_YELLOW; 
                     if(i % 4 == 0) m_CurrentTreeList[i].color = AUTUMN_RED;
                 }
                 else
