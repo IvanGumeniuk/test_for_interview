@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Networking : Photon.PunBehaviour{
     [SerializeField]
-    private GameObject Players;
+   // private GameObject Players;
     /*
         // Use this for initialization
         private string m_GameVersion = "0.1";
@@ -89,7 +89,7 @@ public class Networking : Photon.PunBehaviour{
     }
     void OnGUI()
     {
-   //     GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+        GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
     }
     void OnConnectedToMaster()
     {
@@ -108,7 +108,7 @@ public class Networking : Photon.PunBehaviour{
     }
     void SpawnMyPlayer()
     {
-        GameObject myPlayerGO = (GameObject)PhotonNetwork.Instantiate("Player123", Players.transform.position, transform.rotation, 0);
+        GameObject myPlayerGO = (GameObject)PhotonNetwork.Instantiate("FP Controller", transform.position, transform.rotation, 0);
        // GameObject myPlayerCamera = (GameObject)PhotonNetwork.Instantiate("vThirdPersonCamera", transform.position, transform.rotation, 0);
     }
 
